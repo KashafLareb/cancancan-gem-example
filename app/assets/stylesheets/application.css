@@ -17,7 +17,7 @@
 
  .email{
    font-style: italic;
-   color:slategray; 
+   color:lightsteelblue; 
  }
 
  .question {
@@ -30,3 +30,8 @@
    font-size: medium;
    color:steelblue;
  }
+
+ .current-user {
+  color:darkorange;
+ }
+

@@ -8,6 +8,7 @@ class QuestionsController < ApplicationController
 
   # GET /questions/1 or /questions/1.json
   def show
+    authorize! :update, @question
   end
 
   # GET /questions/new
@@ -17,6 +18,7 @@ class QuestionsController < ApplicationController
 
   # GET /questions/1/edit
   def edit
+    authorize! :update, @question
   end
 
   # POST /questions or /questions.json
