@@ -1,27 +1,38 @@
-<p id="notice"><%= notice %></p>
+<h1>Forum</h1>
 
-<h1>Questions</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @questions.each do |question| %>
-      <tr>
-        <td><%= question.content %></td>
-        <td><%= link_to 'Show', question %></td>
-        <td><%= link_to 'Edit', edit_question_path(question) %></td>
-        <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= link_to "New Question", new_question_path %>
 
 <br>
+<br>
 
-<%= link_to 'New Question', new_question_path %>
+<% @questions.each do |question| %>
+  <hr>Q<%= question.id %>: <span class="question"><%= question.content %></span>
+
+  <% if can? :update, question %>
+    <%= link_to "Edit", edit_question_path(question) %>
+  <% end %>
+  <% if can? :destroy, question %>
+    <%= link_to "Delete", question, method: :delete, data: { confirm: "Are you sure?"} %>
+  <% end %>
+
+  <br>By: <span class="email"><%= question.user.email %></span>
+  <br>
+  <br>
+  <br>
+
+  <% if question.answers.any? %>
+    <strong>Answers for</strong> Q<%= question.id %>:<br>
+    <%= render question.answers %>
+  <% end %>
+  <br>
+
+  <p>Add answer</p>
+  <%= form_for ([question, question.answers.build]) do |f| %>
+    <%= f.text_area :content %>
+    <%= submit_tag "Add" %>
+  <% end %>
+
+  <br><br>
+
+<% end %>
+

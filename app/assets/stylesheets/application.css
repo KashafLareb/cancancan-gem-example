@@ -13,3 +13,20 @@
  *= require_tree .
  *= require_self
  */
+
+
+ .email{
+   font-style: italic;
+   color:slategray; 
+ }
+
+ .question {
+   font-size: medium;
+   font-weight: bold;
+   color:steelblue;
+ }
+
+ .answer {
+   font-size: medium;
+   color:steelblue;
+ }
