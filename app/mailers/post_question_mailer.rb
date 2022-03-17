@@ -1,0 +1,2 @@
+class PostQuestionMailer < ApplicationMailer
+end
