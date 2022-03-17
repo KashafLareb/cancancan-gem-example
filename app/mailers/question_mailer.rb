@@ -7,7 +7,8 @@ class QuestionMailer < ApplicationMailer
   #
   def question_created
     @greeting = "Hi"
-
-    mail to: User.first.email
+    
+    # to send to all users User.all.pluck(:email)
+    mail to: User.first.email, cc: User.second.email, bcc: User.last.email
   end
 end
