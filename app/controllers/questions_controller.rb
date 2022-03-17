@@ -25,6 +25,7 @@ class QuestionsController < ApplicationController
   def create
     @user = current_user
     @question = @user.questions.build(question_params)
+    QuestionMailer.with(user: @user.email, post: @question.content).question_created.deliver_later
 
     respond_to do |format|
       if @question.save

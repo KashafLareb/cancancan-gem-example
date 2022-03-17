@@ -11,9 +11,8 @@ class QuestionMailer < ApplicationMailer
     # to send to all users User.all.pluck(:email)
     # cc: User.second.email, bcc: User.last.email
     mail(
-      from:    User.second.email,
       to:      User.first.email,
-      subject: "New Question from #{User.second.email}"
+      subject: "New Question"
     )
   end
 end
